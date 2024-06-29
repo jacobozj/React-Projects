@@ -1,34 +1,27 @@
 import { useState } from "react";
-
+import NavigationMenu from "./NavigationMenu";
 function Nav() {
-    const [showMenu, setShowMenu] = useState(false);
-    
-    // className="fixed bg-white top-0 left-0 w-4/5 h-full z-10 shadow"
-    // className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" onClick={() => setShowMenu(!showMenu)}
+  const [showMenu, setShowMenu] = useState(false);
 
-    let menu;
-    let menuMask;
-    if (showMenu) {
-        menu = 
-            <ul className="fixed bg-white top-0 left-0 w-4/5 h-full z-10 shadow">
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-                <li>
-                    <a href="#services">Services</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-                <li>
-                    <a href="#about">About</a>
-                </li>
-            </ul>
-        menuMask = <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" onClick={() => setShowMenu(!showMenu)}></div>
-    }
+  // className="fixed bg-white top-0 left-0 w-4/5 h-full z-10 shadow"
+  // className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" onClick={() => setShowMenu(!showMenu)}
+
+  let menu;
+  let menuMask;
+  if (showMenu) {
+    menu = (
+      <NavigationMenu closeMenu={() => setShowMenu(!showMenu)}/>
+    );
+    menuMask = (
+      <div
+        className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
+        onClick={() => setShowMenu(!showMenu)}
+      ></div>
+    );
+  }
   return (
     <nav>
-        <div>
+      <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -46,7 +39,7 @@ function Nav() {
         </svg>
         {menuMask}
         {menu}
-        </div>
+      </div>
     </nav>
   );
 }
